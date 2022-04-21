@@ -18,7 +18,7 @@ public class _6_BestTimeToBuyNSellStock {
 		while(++i < n) {
 			if(i < n && prices[i] < lowPrice) // either value can be the least 
 				lowPrice = prices[i];
-			else if(i < n && profit < (prices[i] - lowPrice)) // or it can be the with the highes profit
+			else if(i < n && profit < (prices[i] - lowPrice)) // or it can be the with the highest profit
 				profit = prices[i] - lowPrice;
 		}
 		return profit;

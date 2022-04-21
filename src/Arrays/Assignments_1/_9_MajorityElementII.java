@@ -21,6 +21,9 @@ public class _9_MajorityElementII {
 		return list;
 	}
 	
+	//Follow up: Could you solve the problem in linear time and in O(1) space?
+	
+	
 	public static void main(String[] args) {
 		// find all elements that appear more than  n/3  times.
 		int nums[] = {2,2};

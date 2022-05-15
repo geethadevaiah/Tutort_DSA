@@ -4,13 +4,14 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+import java.util.stream.Collectors;
 
 import Tree.TreeNode;
 
 public class LevelOrderTraversal {
 
-	public List<List<Integer>> levelOrder(TreeNode root) {
-		List<List<Integer>> list = new ArrayList<>();
+	public List<Double> levelOrder(TreeNode root) {
+		List<Double> list = new ArrayList<>();
 		if(root == null) return list;
 		Queue<TreeNode> q = new LinkedList<>();
 		q.add(root);
@@ -25,7 +26,7 @@ public class LevelOrderTraversal {
 					q.add(treeNode.right);
 				l.add(q.remove().val);
 			}
-			list.add(l);
+			list.add(l.stream().collect(Collectors.averagingDouble(s->Double.parseDouble(s.toString()))));
 		}
 		return list;
 	}

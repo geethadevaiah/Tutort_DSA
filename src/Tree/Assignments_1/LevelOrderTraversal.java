@@ -1,33 +1,47 @@
 package Tree.Assignments_1;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Queue;
-import java.util.stream.Collectors;
 
 import Tree.TreeNode;
 
 public class LevelOrderTraversal {
-
-	public List<Double> levelOrder(TreeNode root) {
-		List<Double> list = new ArrayList<>();
-		if(root == null) return list;
+	
+	public static int minD(TreeNode node) {
+		if(node == null) return 0;
 		Queue<TreeNode> q = new LinkedList<>();
-		q.add(root);
-		while (!q.isEmpty()) {
-			List<Integer> l = new ArrayList<Integer>();
+		q.add(node);
+		int i = 1;
+		while(!q.isEmpty()) {
 			int size = q.size();
-			for (int i = 0; i < size; i++) {
-				TreeNode treeNode = q.peek();
-				if (treeNode.left != null)
-					q.add(treeNode.left);
-				if (treeNode.right != null)
-					q.add(treeNode.right);
-				l.add(q.remove().val);
+			i++;
+			for(int j = 0 ; j < size ; j++) {
+				TreeNode n = q.peek();
+				if(q.peek().left != null) q.add(q.peek().left);
+				if(q.peek().right != null) q.add(q.peek().right);
+				q.poll();
+				if(n.left == null && n.right == null)
+					return i;
 			}
-			list.add(l.stream().collect(Collectors.averagingDouble(s->Double.parseDouble(s.toString()))));
 		}
-		return list;
+		return -1;
+	}
+	
+	
+	public static void main(String[] args) {
+		TreeNode root = new TreeNode(1);
+		TreeNode node1 = new TreeNode(2);
+		TreeNode node2 = new TreeNode(3);
+		TreeNode node3 = new TreeNode(4);
+		TreeNode node4 = new TreeNode(5);
+		TreeNode node5 = new TreeNode(6);
+		TreeNode node6 = new TreeNode(7);
+		root.right = node1;
+		node1.right = node2;
+//		node2.left = node3;
+		node2.right = node3;
+//		node2.left = node5;
+		node3.right = node4;
+		System.out.println(minD(root));
 	}
 }

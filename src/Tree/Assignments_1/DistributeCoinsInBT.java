@@ -17,6 +17,7 @@ public class DistributeCoinsInBT {
 		int R = dfs(node.right);
 		// count the moves with absolute
 		ans += Math.abs(L) + Math.abs(R);
+		// every node excess 
 		return node.val + L + R - 1;
 	}
 }

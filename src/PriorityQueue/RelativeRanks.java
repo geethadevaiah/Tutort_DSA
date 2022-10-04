@@ -1,4 +1,4 @@
-package Greedy;
+package PriorityQueue;
 
 import java.util.PriorityQueue;
 
@@ -7,7 +7,9 @@ public class RelativeRanks {
 		int n = score.length;
 
 		String[] res = new String[n];
-		PriorityQueue<Integer> pq = new PriorityQueue<>();
+		// pQ such that given the indices in the q, value of which is in decreasing order
+		// {10,3,8,9,4} PR: 0,3,2,4,1]
+		PriorityQueue<Integer> pq = new PriorityQueue<>((a,b) -> score[b]-score[a]);
 		for(int i = 0 ; i < n ; i++) {
 			pq.add(i);
 		}
@@ -37,7 +39,7 @@ public class RelativeRanks {
 	}
 	
 	public static void main(String[] args) {
-		int[] score = {5,4,3,2,1};
-		System.out.println(findRelativeRanks1(score));
+		int[] score = {10,3,8,9,4};
+		System.out.println(findRelativeRanks(score));
 	}
 }
